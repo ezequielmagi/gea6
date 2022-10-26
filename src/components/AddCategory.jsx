@@ -5,13 +5,18 @@ export default function AddCategory( {onAddCategory} ){
   const [ inputValue , setInputValue ] = useState('')
   
   const handleChange = ( { target } ) => {
-    console.log(target.value)
     setInputValue(target.value)
   }
 
   const handleSubmit = (e) => {
+      //prevenimos el refresco del submit
     e.preventDefault();
+      //Evitamos que se ingrese un string vacío. 
+    if(inputValue.trim().length < 1) return
+      //Transferimos la información al elemento padre
     onAddCategory(inputValue)
+      //Limpiamos el input
+    setInputValue('')
   }
 
   return(
